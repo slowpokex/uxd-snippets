@@ -4,7 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User } from './interfaces/user.interface';
 import { UserDto } from './dto/user.dto';
 import { UserSchema } from './schemas/user.schema';
-import { CommonService } from "../common/lib/common.service";
+import { CommonService } from '../app/lib/common.service';
 
 @Component()
 export class UserService extends CommonService<User, UserDto> {

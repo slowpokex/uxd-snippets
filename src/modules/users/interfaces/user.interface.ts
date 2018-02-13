@@ -1,5 +1,5 @@
 import { Document } from 'mongoose';
-import { UserRoles } from "../enums/user-roles.enum";
+import { UserRoles } from '../enums/user-roles.enum';
 
 export interface User extends Document {
     readonly id: number;

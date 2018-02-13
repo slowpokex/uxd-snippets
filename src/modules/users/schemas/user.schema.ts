@@ -12,36 +12,36 @@ const SALT_WORK_FACTOR = 10;
 export const UserSchema = new Schema({
     _id: {
         type: Number,
-        required: true
+        required: true,
     },
     login: {
         type: String,
         required: true,
         unique: true,
         minlength: 6,
-        maxlength: 128
+        maxlength: 128,
     },
     password: {
         type: String,
         required: true,
-        minlength: 6
+        minlength: 6,
     },
     displayName: {
         type: String,
-        default: 'Anonymous'
+        default: 'Anonymous',
     },
     email: {
-        type: String
+        type: String,
     },
     role: {
         type: String,
         enum: Object.values(UserRoles),
-        default: UserRoles.GUEST
+        default: UserRoles.GUEST,
     },
     lastModifiedDate: Date,
 });
 
-UserSchema.pre('save', function (next) {
+UserSchema.pre('save', function(next) {
     const user = this;
     user.lastModifiedDate = new Date();
     if (!user.isModified('password')) {
@@ -55,8 +55,6 @@ UserSchema.pre('save', function (next) {
         }).catch(err => next(err));
 });
 
-UserSchema.methods.comparePassword = function (candidatePassword, cb) {
-    return compareAsync(candidatePassword, this.password)
-        .then(isMatch => cb(null, isMatch))
-        .catch(err => cb(err));
+UserSchema.methods.comparePassword = function(candidatePassword) {
+    return compareAsync(candidatePassword, this.password);
 };

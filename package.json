@@ -1,8 +1,7 @@
 {
-  "name": "nest-typescript-starter",
+  "name": "uxd-snippets",
   "version": "1.0.0",
-  "description": "Nest TypeScript starter repository",
-  "license": "MIT",
+  "description": "Snippets for uxd-techtalks",
   "scripts": {
     "start": "node index.js",
     "start:watch": "nodemon",
@@ -18,8 +17,14 @@
     "@nestjs/websockets": "^4.5.8",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express-session": "^1.15.6",
+    "lodash": "^4.17.5",
     "mongoose": "^5.0.4",
     "mongoose-auto-increment": "^5.0.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "redis": "^2.7.1",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^5.5.6",
@@ -29,6 +34,7 @@
     "@types/mongoose": "^5.0.1",
     "@types/node": "^9.3.0",
     "nodemon": "^1.14.1",
-    "ts-node": "^4.1.0"
+    "ts-node": "^4.1.0",
+    "tslint": "^5.9.1"
   }
 }

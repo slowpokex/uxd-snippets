@@ -1,28 +1,31 @@
 /**
  * Common base service
- * */
-export class CommonService<Type, DtoType> {
-    constructor(Schema) {
-        this.Schema = Schema;
+ **/
+
+export class CommonService<Type extends Document, DtoType> {
+    Model: any;
+
+    constructor(Model) {
+        this.Model = Model;
     }
 
     /**
-     * Create new schema from commonDto body
+     * Create new Model from commonDto body
      * @param {CreateDtoType} commonDto - object for creating
      * @returns {Promise}
      */
     async create(commonDto: DtoType): Promise<DtoType> {
-        const commonModel = new this.Schema(commonDto);
+        const commonModel = new this.Model(commonDto);
         return await commonModel.save();
     }
 
     /**
-     * Count schema instances
+     * Count Model instances
      * @param {DtoType} commonDto - input DTO for count
      * @returns {number} - count of instances
      */
     async count(commonDto: DtoType) {
-        return await this.Schema.find(commonDto).count().exec();
+        return await this.Model.find(commonDto).count().exec();
     }
 
     /**
@@ -30,7 +33,7 @@ export class CommonService<Type, DtoType> {
      * @returns {Promise}
      */
     async findAll(): Promise<Type[]> {
-        return await this.Schema.find().exec();
+        return await this.Model.find().exec();
     }
 
     /**
@@ -39,7 +42,7 @@ export class CommonService<Type, DtoType> {
      * @returns {Promise}
      */
     async findOne(commonDto: DtoType): Promise<Type> {
-        return await this.Schema.findOne(commonDto).exec();
+        return await this.Model.findOne(commonDto).exec();
     }
 
     /**
@@ -47,25 +50,26 @@ export class CommonService<Type, DtoType> {
      * @param {number|string} id - id of Type
      * @returns {Promise}
      */
-    async findById(id): Promise<Type> {
-        return await this.Schema.findById(id).exec();
+    async findById(id: number|string): Promise<Type> {
+        return await this.Model.findById(id).exec();
     }
 
     /**
-     * Update instances
+     * Update
+     * @param {number|string} id - id for updating
      * @param {DtoType} commonDto - input DTO for updating
      * @returns {Promise}
      */
-    async update(commonDto: DtoType) {
-        return await this.Schema.update(commonDto).exec();
+    async update(id: number|string, commonDto: DtoType) {
+        return await this.Model.update({ _id: id, ...commonDto }).exec();
     }
 
     /**
      * Remove instances
-     * @param {DtoType} commonDto - input DTO for removing
+     * @param {number|string} id - id for removing
      * @returns {Promise}
      */
-    async remove(commonDto: DtoType) {
-        return await this.Schema.remove(commonDto).exec();
+    async remove(id: number|string) {
+        return await this.Model.remove({ _id: id }).exec();
     }
 }
