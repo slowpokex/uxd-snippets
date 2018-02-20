@@ -2,9 +2,11 @@ import { Controller, Get, Post, Body, HttpCode, HttpStatus, Param, Put, Delete, 
 import { UserDto } from './dto/user.dto';
 import { UserService } from './user.service';
 import { User } from './interfaces/user.interface';
-import { RolesGuard } from '../app/guards/roles.guard';
-import { AuthGuard } from '../app/guards/auth.guard';
+import { RolesGuard } from '../../guards/roles.guard';
+import { AuthGuard } from '../../guards/auth.guard';
+import {ApiUseTags} from '@nestjs/swagger';
 
+@ApiUseTags('users')
 @Controller('users')
 @UseGuards(AuthGuard)
 export class UserController {

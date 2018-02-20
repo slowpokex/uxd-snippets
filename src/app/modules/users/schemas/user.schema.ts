@@ -1,3 +1,4 @@
+import { values } from 'lodash';
 import { Schema } from 'mongoose';
 import { genSalt, hash, compare } from 'bcrypt';
 import { promisify } from 'util';
@@ -35,7 +36,7 @@ export const UserSchema = new Schema({
     },
     role: {
         type: String,
-        enum: Object.values(UserRoles),
+        enum: values(UserRoles),
         default: UserRoles.GUEST,
     },
     lastModifiedDate: Date,

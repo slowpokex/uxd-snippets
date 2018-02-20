@@ -5,12 +5,11 @@ import { AuthController } from './auth.controller';
 import { LocalStrategy } from './local.strategy';
 import { AuthService } from './auth.service';
 import { MiddlewaresConsumer } from '@nestjs/common/interfaces/middlewares';
-import { UserModule } from '../../users/user.module';
+import { UserModule } from '../modules/users/user.module';
 import { OnModuleInit } from '@nestjs/common/interfaces/modules';
-import { UserService } from '../../users/user.service';
-import { User } from '../../users/interfaces/user.interface';
-import { UserSchema } from '../../users/schemas/user.schema';
+import { UserService } from '../modules/users/user.service';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UserSchema } from '../modules/users/schemas/user.schema';
 
 @Module({
     imports: [MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]), UserModule],

@@ -1,16 +1,18 @@
 import * as passport from 'passport';
-import {Get, Post, Controller, Response, Next, Request} from '@nestjs/common';
+import { Get, Post, Controller, Response, Next, Request } from '@nestjs/common';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('auth')
 @Controller()
 export class AuthController {
 
     @Get('/login')
-    async getAuthenticatePage(@Request() req): string {
+    async getAuthenticatePage(@Request() req) {
         return req.flash('loginMessage');
     }
 
     @Post('/login')
-    async authenticate(@Request() req, @Response() res, @Next() next) {
+    async authenticate(@Request() req, @Response() res, @Next() next): Promise<any> {
         return await passport.authenticate('local', {
             successRedirect: '/',
             failureRedirect: '/login',

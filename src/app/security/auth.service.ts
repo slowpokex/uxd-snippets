@@ -1,7 +1,7 @@
 import { Component } from '@nestjs/common';
-import { UserModel, UserSchema } from '../../users/schemas/user.schema';
-import { UserService } from '../../users/user.service';
-import { User } from '../../users/interfaces/user.interface';
+import { UserModel, UserSchema } from '../modules/users/schemas/user.schema';
+import { UserService } from '../modules/users/user.service';
+import { User } from '../modules/users/interfaces/user.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
