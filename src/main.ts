@@ -6,8 +6,11 @@ import app from './app/config/express.config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
+    // App
     const nestApp = await NestFactory.create(ApplicationModule, app);
+
     nestApp.useGlobalFilters(new HttpExceptionFilter());
+
     const options = new DocumentBuilder()
         .setTitle('User API example')
         .setDescription('The User\'s API description')
