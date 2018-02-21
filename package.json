@@ -27,6 +27,7 @@
     "cors": "^2.8.4",
     "express-session": "^1.15.6",
     "helmet": "^3.11.0",
+    "joy": "^0.1.1",
     "lodash": "^4.17.5",
     "mongoose": "^5.0.4",
     "mongoose-auto-increment": "^5.0.1",
